@@ -1,4 +1,4 @@
-.PHONY: setup download load test all
+.PHONY: setup download load test all sql
 
 setup:
 	python3 -m venv .venv
@@ -14,3 +14,6 @@ test:
 	.venv/bin/python -m pytest
 
 all: download load
+
+sql:
+	.venv/bin/python src/run_sql.py sql/01_staging.sql sql/02_quality.sql sql/03_kpis.sql

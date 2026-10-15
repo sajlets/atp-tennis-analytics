@@ -30,11 +30,12 @@ def main() -> int:
             "SELECT name FROM sqlite_master WHERE type = 'table' ORDER BY name")]
         for table in tables:
             df = pd.read_sql_query(f'SELECT * FROM "{table}"', src)
-            # keep integer columns with NULLs as integers (pandas would make them float)
             df = df.convert_dtypes()
+
             dst.register("df", df)
             dst.execute(f'CREATE OR REPLACE TABLE raw_{table.lower()} AS SELECT * FROM df')
             dst.unregister("df")
+
             n = dst.execute(f"SELECT count(*) FROM raw_{table.lower()}").fetchone()[0]
             print(f"raw_{table.lower():<15} {n:>6} rows")
     finally:
