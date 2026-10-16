@@ -32,3 +32,15 @@ SELECT
     CAST(t.UnitPrice AS DECIMAL(10, 2))  AS unit_price
 FROM raw_track AS t
 LEFT JOIN raw_genre AS g ON g.GenreId = t.GenreId;
+CREATE OR REPLACE VIEW stg_album AS
+SELECT
+    AlbumId   AS album_id,
+    Title     AS album_title,
+    ArtistId  AS artist_id
+FROM raw_album;
+
+CREATE OR REPLACE VIEW stg_artist AS
+SELECT
+    ArtistId  AS artist_id,
+    Name      AS artist_name
+FROM raw_artist;
