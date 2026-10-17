@@ -1,4 +1,4 @@
-.PHONY: setup download load test all sql charts
+.PHONY: setup download load test all sql charts 
 
 charts:
 	.venv/bin/python src/build_charts.py
@@ -16,7 +16,10 @@ load:
 test:
 	.venv/bin/python -m pytest
 
-all: download load
+report:
+	.venv/bin/python src/report.py
+
+all: download load sql charts report
 
 sql:
 	.venv/bin/python src/run_sql.py sql/01_staging.sql sql/02_quality.sql sql/03_kpis.sql
