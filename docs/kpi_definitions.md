@@ -17,7 +17,7 @@ Revenue figures are in the currency of the source data.
   - Years end on slightly different dates (see `last_invoice_date`; 2025 ends
     on 22 December), so the last year is not perfectly comparable.
   - It is a sample database, not a real business.
-- **Chart file:** `docs/img/revenue_by_year.png`
+- **Chart file:** `docs´img/revenue_by_year.png`
 
 ## KPI 2: Revenue by genre
 - **Business question:** Which genres bring the most revenue, and how
